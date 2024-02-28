@@ -13,10 +13,9 @@ module.exports = {
         },
     },
     output: {
-        filename: "../dist/wasmoon.js",
-        path: path.resolve(__dirname, 'dist'),
+        filename: "../../dist/wasmoon.js",
         library: {
-            name: 'lb',
+            name: 'lb', // the name of the global variable
             type: 'var',
         },
     },

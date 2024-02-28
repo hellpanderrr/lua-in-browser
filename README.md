@@ -3,18 +3,18 @@
 
 ## Quick way (using my pre-built wasmoon_min.js)
 
-**TL;DR**: Clone the repo, put your lua code in `init` function inside `html/main.html` and you are good to go. All `test*` files and folder are for demonstration purproses only and can be removed.
+**TL;DR**: Clone the repo, put your lua code in `init` function inside `html/main.html` and you are good to go. All `test*` files and folders are for demonstration purproses only and can be removed.
     
-Minimal version of wasmoon is built from the following code:
+Minimal version of `wasmoon.js` is built from the following code:
 
 ```js
 const {LuaFactory} = require('wasmoon')
 const factory = new LuaFactory()
 export {factory}
 ```
-It loads factory into global variable `lb`. 
+It loads factory into a global variable `lb`. 
 
-With it, you then need to create Lua engine
+Having `wasmoon.js` loaded as a script in HTML, you then need to create Lua engine
 
 ```js 
 const factory = await lb.factory
@@ -86,7 +86,15 @@ An extended version of this function is located inside `html\main.html`. It is c
 ---
 
 ## Build your own wasmoon.js with webpack
-    TODO
+
+
+1. Install node
+2. `cd build`
+3. `npm install wasmoon`
+4. Set up paths in `webpack.config.js`
+5. `npx webpack`
+
+Now you should have your `wasmoon.js` in the output folder
 
     
     
