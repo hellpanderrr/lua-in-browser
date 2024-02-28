@@ -3,7 +3,7 @@
 
 ## Quick way (using my pre-built wasmoon_min.js)
 
-TL;DR: Clone the repo, put your lua code in `init` function inside `html/main.html` and you are good to go. All `test*` files and folder are for demonstration purproses only and can be removed.
+**TL;DR**: Clone the repo, put your lua code in `init` function inside `html/main.html` and you are good to go. All `test*` files and folder are for demonstration purproses only and can be removed.
     
 Minimal version of wasmoon is built from the following code:
 
@@ -14,9 +14,10 @@ export {factory}
 ```
 It loads factory into global variable `lb`. 
 
-You then need to create Lua engine
+With it, you then need to create Lua engine
 
 ```js 
+const factory = await lb.factory
 const lua = await factory.createEngine()
 ```
 and you can run Lua using `doString` method:
@@ -26,7 +27,7 @@ and you can run Lua using `doString` method:
  ```
 
 
-`lua.global.get` and `lua.global.set` allow both-way binding of values and functions between Lua and JS:
+`lua.global.get` and `lua.global.set` allow two-way binding of values and functions between Lua and JS:
 
 ```js
 >>> await lua.doString(`function sum(x,y) return x+y end`)
@@ -42,13 +43,13 @@ and you can run Lua using `doString` method:
 16
 ```
 
-To use an external file you need to mount it:
+To use an external file, you need to mount it:
 
 ```js
 factory.mountFile(path, content)
 ```
 
-Using fetch we can make it into an AJAX request:
+Using fetch, we can transform it into an AJAX request:
 
 ```js
 lua.global.set('fetch', (url) => fetch(url));
@@ -78,7 +79,7 @@ function require(path)
   return module
 end
 ```
-Extended version of this function is located inside `html\main.html`. It is cached (with `memoize`) and can handle dot-separated package paths, e.g. `require ("package.subpackage.module")`
+An extended version of this function is located inside `html\main.html`. It is cached (with `memoize`) and can handle dot-separated package paths, e.g. `require ("package.subpackage.module")`
 
 
 
