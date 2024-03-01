@@ -32,7 +32,7 @@ and you can run Lua using `doString` method:
 ```js
 >>> await lua.doString(`function sum(x,y) return x+y end`)
 >>> sum = lua.global.get("sum")
->>> (1,5) 
+>>> sum(1,5) 
 6
 ```
 
